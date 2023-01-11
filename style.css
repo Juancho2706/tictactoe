@@ -1,0 +1,13 @@
+.lineas{
+    border: 2px solid;
+    min-width: 100px;
+    min-height: 100px;
+}
+.contenedor{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.x>p{
+    font-stretch: condensed;
+}

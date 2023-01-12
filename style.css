@@ -2,12 +2,37 @@
     border: 2px solid;
     min-width: 100px;
     min-height: 100px;
+    max-width: 150px;
+    max-height: 150px;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
 }
 .contenedor{
+    font-family: 'Game' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+    place-content: center;
 }
-.x>p{
-    font-stretch: condensed;
+.lineas>p{
+    font-size: xxx-large;
+}
+.O>p{
+    color: green;
+}
+.X>p{
+    color: red;
+}
+.botones{
+    text-align: center;
+}
+.no-click {
+    pointer-events: none;
+    cursor: default;
+}
+@font-face {
+    font-family: 'Game';
+    src: url('/font/Gameplay.ttf');
 }

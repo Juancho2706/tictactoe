@@ -18,18 +18,42 @@ const gameBoard = (() => {
     }
     const vsPC = (divcpu) => {
         posalazarCPU = Math.floor(Math.random() * 9)
-        if(gameBoard.unarraytablero[posalazarCPU].lamarca == undefined){
-            Object.assign(gameBoard.unarraytablero[posalazarCPU], {lamarca: marcapc})
-            laclase(divcpu[posalazarCPU],marcapc)
-         }
+        z = false
+        while(z == false){
+            if(gameBoard.unarraytablero[posalazarCPU].lamarca == undefined){
+                z = true
+            }else{
+                posalazarCPU = Math.floor(Math.random() * 9)
+            }
+        }
+        Object.assign(gameBoard.unarraytablero[posalazarCPU], {lamarca: marcapc})
+        laclase(divcpu[posalazarCPU],marcapc)
+        // ganar(gameBoard.unarraytablero)
     }
-    return {anadir, unarraytablero, vsPC}
+    const elganador = (quien) => {
+        for (let index = 0; index < $elpackdedivs.length; index++) {
+            $elpackdedivs[index].classList.add('no-click')
+        }
+        alert(quien)
+    }
+    return {anadir, unarraytablero, vsPC, elganador}
 })();
+
+function resetgameboard(){
+    for (let index = 0; index < $elpackdedivs.length; index++) {
+        $elpackdedivs[index].classList.remove('no-click')
+        $elpackdedivs[index].classList.remove('O')
+        $elpackdedivs[index].classList.remove('X')
+        $elpackdedivs[index].querySelector('p').innerText = ''
+        gameBoard.unarraytablero[index] = {elindex: index}
+    }
+}
 
 let eltablerocontenedor = document.querySelector('.contenedor')
 const $solo = document.querySelector('.solo').addEventListener('click', (e)=>{swag(1)})
 const $otroplayer = document.querySelector('.otroplayer').addEventListener('click', (e)=>{swag(2)})
 const $elpackdedivs = eltablerocontenedor.getElementsByTagName('div')
+const $reset = document.querySelector('.reset').addEventListener('click', (e)=>{resetgameboard()})
 function swag(a){
     if(a==1){
         return esCPU = true
@@ -37,29 +61,35 @@ function swag(a){
         return esCPU = false
     }
 }
-
-// async function laespera(){
-//     async function pause() {
-//         await new Promise(resolve => setTimeout(resolve, 5000));
-//       }
-      
-//       console.log('Start');
-//       await pause();
-// }
-
+const ganar = (elarray) => {
+    const segano = (one,two,three) => {
+        if(one.lamarca == 'X' && two.lamarca == 'X' && three.lamarca == 'X'){
+            return gameBoard.elganador('Ganaste!')
+        }else if(one.lamarca == 'O' && two.lamarca == 'O' && three.lamarca == 'O'){
+            return gameBoard.elganador('Gano el CPU!')
+        }
+    }
+    segano(elarray[0],elarray[1],elarray[2])
+    segano(elarray[0],elarray[4],elarray[8])
+    segano(elarray[0],elarray[3],elarray[6])
+    segano(elarray[1],elarray[4],elarray[7])
+    segano(elarray[2],elarray[4],elarray[6])
+    segano(elarray[2],elarray[5],elarray[8])
+    segano(elarray[3],elarray[4],elarray[5])
+    segano(elarray[6],elarray[7],elarray[8])
+}
 for (let index = 0; index < gameBoard.unarraytablero.length; index++) {
     const undiv = document.createElement('div')
     undiv.classList.add('lineas')
     undiv.addEventListener('click', (e)=>{
         gameBoard.anadir(index,undiv,turno)
         if(esCPU == true){
-            // const wait = () => {
-            //     return new Promise(resolve => setTimeout(resolve, 1000));
-            //   }       
-            //   wait().then(() => {
-                // laespera()
+            // ganar(gameBoard.unarraytablero)
+            cuantosquedan = gameBoard.unarraytablero.filter(u => u.lamarca == undefined)
+            if(cuantosquedan.length > 1){
                 gameBoard.vsPC($elpackdedivs)
-            //   })
+                // ganar(gameBoard.unarraytablero)
+            }
         }else{
             if(turno == 'X'){
                 turno = 'O'
@@ -67,7 +97,9 @@ for (let index = 0; index < gameBoard.unarraytablero.length; index++) {
                 turno = 'X'
             }
         }
+        ganar(gameBoard.unarraytablero)
     })
     undiv.append(document.createElement('p'))
     eltablerocontenedor.append(undiv)
+    
 }

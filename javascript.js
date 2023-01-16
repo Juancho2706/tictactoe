@@ -50,6 +50,7 @@ function resetgameboard(){
     }
     $elganador.innerText = ''
     $ventanaresultados.style.display = "none"
+    turno = 'X'
 }
 
 let eltablerocontenedor = document.querySelector('.contenedor')

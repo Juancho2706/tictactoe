@@ -52,7 +52,7 @@ body{
 }
 @font-face {
     font-family: 'Game';
-    src: url('/font/Gameplay.ttf');
+    src: url('../tictactoe/font/Gameplay.ttf');
 }
 button{
 

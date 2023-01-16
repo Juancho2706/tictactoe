@@ -1,3 +1,9 @@
+body{
+    background-color: #184e77;
+    font-family: 'Game' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
 .lineas{
     border: 2px solid;
     min-width: 100px;
@@ -8,6 +14,8 @@
     align-content: center;
     justify-items: center;
     align-items: center;
+    border-radius: 5px;
+    background-color: #52b69a;
 }
 .contenedor{
     font-family: 'Game' , system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -15,6 +23,16 @@
     grid-template-columns: 150px 150px 150px;
     grid-template-rows: 150px 150px 150px;
     place-content: center;
+}
+.ventanaresultados{
+    display: grid;
+    justify-items: center;
+}
+.resultados{
+    background-color: #52b69a;
+    text-align: center;
+    inline-size: max-content;
+    padding: 5px;
 }
 .lineas>p{
     font-size: xxx-large;
@@ -35,4 +53,34 @@
 @font-face {
     font-family: 'Game';
     src: url('/font/Gameplay.ttf');
+}
+button{
+
+    outline: 0;
+    grid-gap: 8px;
+    align-items: center;
+    background-color:#52b69a;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    flex-shrink: 0;
+    font-size: 16px;
+    gap: 8px;
+    justify-content: center;
+    line-height: 1.5;
+    overflow: hidden;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all .14s ease-out;
+    white-space: nowrap;
+}
+button:hover {
+    box-shadow: 4px 4px 0 #000;
+    transform: translate(-4px,-4px);
+}
+button:focus-visible{
+    outline-offset: 1px;
 }

@@ -34,7 +34,8 @@ const gameBoard = (() => {
         for (let index = 0; index < $elpackdedivs.length; index++) {
             $elpackdedivs[index].classList.add('no-click')
         }
-        alert(quien)
+        $elganador.innerText = quien
+        $ventanaresultados.style.display = "grid"
     }
     return {anadir, unarraytablero, vsPC, elganador}
 })();
@@ -47,6 +48,8 @@ function resetgameboard(){
         $elpackdedivs[index].querySelector('p').innerText = ''
         gameBoard.unarraytablero[index] = {elindex: index}
     }
+    $elganador.innerText = ''
+    $ventanaresultados.style.display = "none"
 }
 
 let eltablerocontenedor = document.querySelector('.contenedor')
@@ -54,6 +57,9 @@ const $solo = document.querySelector('.solo').addEventListener('click', (e)=>{sw
 const $otroplayer = document.querySelector('.otroplayer').addEventListener('click', (e)=>{swag(2)})
 const $elpackdedivs = eltablerocontenedor.getElementsByTagName('div')
 const $reset = document.querySelector('.reset').addEventListener('click', (e)=>{resetgameboard()})
+const $elganador = document.querySelector('.resultados')
+const $ventanaresultados = document.querySelector('.ventanaresultados')
+$ventanaresultados.style.display = "none"
 function swag(a){
     if(a==1){
         return esCPU = true
